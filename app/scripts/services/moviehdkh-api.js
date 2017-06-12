@@ -12,7 +12,7 @@
      var apiUrl = Environments.apiUrl;
      return {
        get: function (path) {
-         return $http.get(apiUrl, path);
+         return $http.get(apiUrl + path);
        }
      }
    });
