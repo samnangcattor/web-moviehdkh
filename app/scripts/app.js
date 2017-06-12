@@ -30,4 +30,66 @@ angular
           controller: 'MainCtrl'
         });
     }
-]);
+  ])
+  .controller('moviehdkhMaterial', [
+    '$scope',
+    '$state',
+    function (
+      $scope,
+      $state
+    ) {
+      $scope.callByMenu = function(action) {
+        action();
+      };
+
+      $scope.sideNavMenuClick = function(menuId, target, attrs) {
+        $state.go(target, attrs || {});
+      };
+
+      $scope.menuYear = [
+        {
+          action: function() { $scope.sideNavMenuClick('left', 'year'); },
+          title: '2018',
+          icon: 'fa fa-list'
+        },
+        {
+          action: function() { $scope.sideNavMenuClick('left', 'year'); },
+          title: '2017',
+          icon: 'fa fa-list'
+        },
+        {
+          action: function() { $scope.sideNavMenuClick('left', 'year'); },
+          title: '2016',
+          icon: 'fa fa-list'
+        },
+        {
+          action: function() { $scope.sideNavMenuClick('left', 'yearList'); },
+          title: 'See All',
+          icon: 'fa fa-list'
+        }
+      ];
+
+      $scope.menuGenre = [
+        {
+          action: function() { $scope.sideNavMenuClick('left', 'year'); },
+          title: '18+',
+          icon: 'fa fa-list'
+        },
+        {
+          action: function() { $scope.sideNavMenuClick('left', 'year'); },
+          title: 'Actions',
+          icon: 'fa fa-list'
+        },
+        {
+          action: function() { $scope.sideNavMenuClick('left', 'year'); },
+          title: 'Adenture',
+          icon: 'fa fa-list'
+        },
+        {
+          action: function() { $scope.sideNavMenuClick('left', 'yearList'); },
+          title: 'See All',
+          icon: 'fa fa-list'
+        }
+      ];
+    }
+  ]);

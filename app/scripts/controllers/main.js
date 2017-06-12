@@ -9,11 +9,6 @@
  */
  angular.module('webMoviehdkhApp')
    .controller('MainCtrl', [
-      'Years',
      function (
-       Years
      ) {
-       Years.get().then(function(year)  {
-         console.log(year);
-       });
    }]);
