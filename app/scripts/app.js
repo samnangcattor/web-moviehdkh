@@ -18,9 +18,15 @@ angular
     'ngTouch',
     'ui.router',
   ])
-  .config(['$urlRouterProvider', '$locationProvider',
-    function ($urlRouterProvider, $locationProvider) {
+  .config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
+    function ($stateProvider, $urlRouterProvider, $locationProvider) {
       $locationProvider.html5Mode(true);
       $urlRouterProvider.otherwise('/');
+      $stateProvider
+        .state('main', {
+          url: '/',
+          templateUrl: 'views/main.html',
+          controller: 'MainCtrl'
+        });
     }
 ]);
