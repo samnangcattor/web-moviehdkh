@@ -4,7 +4,7 @@
  * @ngdoc service
  * @name webMoviehdkhApp.Years
  * @description
- * # MoviehdkhApi
+ * # Movies
  * Service in the webMoviehdkhApp.
  */
 

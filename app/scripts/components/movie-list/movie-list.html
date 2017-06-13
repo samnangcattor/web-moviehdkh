@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h3>
+          <i class="fa fa-film"></i>
+          <span ng-bind="$ctrl.title" style="font-weight: bold;"></span>
+        </h3>
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content">
+        <div class="row">
+          <div class="col-md-55" ng-repeat="movie in $ctrl.movies|limitTo:$ctrl.perPage">
+            <div class="image view view-first">
+              <img style="width: 100%; display: block; height: 285px;" src="{{movie.poster}}" alt="image">
+              <a href="{{movie.slug}}">
+                <div class="mask" style="height: 285px;">
+                  <p ng-bind="movie.title" style="font-weight: bold;"></p>
+                  <div class="tools">
+                    <i class="fa fa-play-circle"></i>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
