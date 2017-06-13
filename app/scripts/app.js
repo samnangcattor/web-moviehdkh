@@ -17,8 +17,7 @@ angular
     'ngSanitize',
     'ngTouch',
     'ui.router',
-    'services.environments',
-    'ui.carousel'
+    'services.environments'
   ])
   .config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
     function ($stateProvider, $urlRouterProvider, $locationProvider) {

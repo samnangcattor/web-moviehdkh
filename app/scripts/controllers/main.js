@@ -19,11 +19,9 @@
      ) {
       $q.all([
         Movies.newUpdate(),
-        Movies.hot(),
-        Movies.slide()
+        Movies.hot()
       ]).then(function (results) {
         $scope.newMovies = results[0];
         $scope.hotMovies = results[1];
-        $scope.slideMovies = results[2];
       });
    }]);
