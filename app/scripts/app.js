@@ -28,6 +28,11 @@ angular
           url: '/',
           templateUrl: 'views/main.html',
           controller: 'MainCtrl'
+        })
+        .state('yearList', {
+          url: '/year-list',
+          template: '<year-list></year-list>',
+          title: 'Year List'
         });
     }
   ])
@@ -63,8 +68,18 @@ angular
           icon: 'fa fa-list'
         },
         {
+          action: function() { $scope.sideNavMenuClick('left', 'year'); },
+          title: '2015',
+          icon: 'fa fa-list'
+        },
+        {
+          action: function() { $scope.sideNavMenuClick('left', 'year'); },
+          title: '2014',
+          icon: 'fa fa-list'
+        },
+        {
           action: function() { $scope.sideNavMenuClick('left', 'yearList'); },
-          title: 'See All',
+          title: 'See all',
           icon: 'fa fa-list'
         }
       ];
@@ -83,6 +98,11 @@ angular
         {
           action: function() { $scope.sideNavMenuClick('left', 'year'); },
           title: 'Adenture',
+          icon: 'fa fa-list'
+        },
+        {
+          action: function() { $scope.sideNavMenuClick('left', 'year'); },
+          title: 'Animation',
           icon: 'fa fa-list'
         },
         {

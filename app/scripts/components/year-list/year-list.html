@@ -1,0 +1,25 @@
+<div class="title_left">
+  <h3>Years</h3>
+</div>
+<div class="clearfix"> </div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="x_panel">
+      <div class="x_content">
+        <div class="row">
+          <div class="clearfix"></div>
+          <div class="bs-glyphicons">
+            <ul class="bs-glyphicons-list">
+              <li ng-repeat="year in $ctrl.years | orderBy:'-number'">
+                <a href="#">
+                  <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+                  <span class="glyphicon-class" ng-bind="year.number"></span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
