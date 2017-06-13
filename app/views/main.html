@@ -1,3 +1,13 @@
-<h1>Home</h1>
+<div class="row">
+  <div class="col-md-12">
+    <ui-carousel slides="slideMovies" dots="true">
+      <carousel-item>
+        <a href="{{item.slug}}">
+          <img src="{{item.cover}}" alt="{{item.title}}" style="height: 600px; width: 100%;"/>
+        </a>
+      </carousel-item>
+    </ui-carousel>
+  </div>
+</div>
 <movie-list movies="hotMovies" title="Famous Movies" per-page="24"></movie-list>
 <movie-list movies="newMovies" title="New Update" per-page="24"></movie-list>

@@ -18,6 +18,7 @@ angular
     'ngTouch',
     'ui.router',
     'services.environments',
+    'ui.carousel'
   ])
   .config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
     function ($stateProvider, $urlRouterProvider, $locationProvider) {

@@ -12,12 +12,17 @@ angular.module('webMoviehdkhApp')
   .service('Movies', function(MoviehdkhApi) {
     return {
       newUpdate: function(param) {
-        return MoviehdkhApi.get('/movies?all=1').then(function(response) {
+        return MoviehdkhApi.get('/movies?q=update').then(function(response) {
           return response.data;
         });
       },
       hot: function(param) {
-        return MoviehdkhApi.get('/movies?hot=1').then(function(response) {
+        return MoviehdkhApi.get('/movies?q=hot').then(function(response) {
+          return response.data;
+        });
+      },
+      slide: function(param) {
+        return MoviehdkhApi.get('/movies?q=slide').then(function(response) {
           return response.data;
         });
       }
