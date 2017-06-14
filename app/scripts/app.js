@@ -29,20 +29,28 @@ angular
           templateUrl: 'views/main.html',
           controller: 'MainCtrl'
         })
-        .state('yearList', {
-          url: '/year-list',
-          template: '<year-list></year-list>',
-          title: 'Year List'
+        .state('year', {
+          url: '/years/{title}',
+          templateUrl: 'views/year.html',
+          controller: 'YearCtrl'
         });
     }
   ])
   .controller('moviehdkhMaterial', [
     '$scope',
     '$state',
+    '$q',
+    'Years',
+    'Genres',
     function (
       $scope,
-      $state
+      $state,
+      $q,
+      Years,
+      Genres
     ) {
+      $scope.menuGenre = [];
+
       $scope.callByMenu = function(action) {
         action();
       };
@@ -51,65 +59,27 @@ angular
         $state.go(target, attrs || {});
       };
 
-      $scope.menuYear = [
-        {
-          action: function() { $scope.sideNavMenuClick('left', 'year'); },
-          title: '2018',
-          icon: 'fa fa-list'
-        },
-        {
-          action: function() { $scope.sideNavMenuClick('left', 'year'); },
-          title: '2017',
-          icon: 'fa fa-list'
-        },
-        {
-          action: function() { $scope.sideNavMenuClick('left', 'year'); },
-          title: '2016',
-          icon: 'fa fa-list'
-        },
-        {
-          action: function() { $scope.sideNavMenuClick('left', 'year'); },
-          title: '2015',
-          icon: 'fa fa-list'
-        },
-        {
-          action: function() { $scope.sideNavMenuClick('left', 'year'); },
-          title: '2014',
-          icon: 'fa fa-list'
-        },
-        {
-          action: function() { $scope.sideNavMenuClick('left', 'yearList'); },
-          title: 'See all',
-          icon: 'fa fa-list'
-        }
-      ];
 
-      $scope.menuGenre = [
-        {
-          action: function() { $scope.sideNavMenuClick('left', 'year'); },
-          title: '18+',
-          icon: 'fa fa-list'
-        },
-        {
-          action: function() { $scope.sideNavMenuClick('left', 'year'); },
-          title: 'Actions',
-          icon: 'fa fa-list'
-        },
-        {
-          action: function() { $scope.sideNavMenuClick('left', 'year'); },
-          title: 'Adenture',
-          icon: 'fa fa-list'
-        },
-        {
-          action: function() { $scope.sideNavMenuClick('left', 'year'); },
-          title: 'Animation',
-          icon: 'fa fa-list'
-        },
-        {
-          action: function() { $scope.sideNavMenuClick('left', 'yearList'); },
-          title: 'See All',
-          icon: 'fa fa-list'
-        }
-      ];
+      $q.all([
+        Years.get(),
+        Genres.get()
+      ]).then(function (results) {
+        $scope.menuYear = [];
+        $scope.menuGenre = [];
+        angular.forEach(results[0], function(year) {
+          $scope.menuYear.push({
+            action: function() { $scope.sideNavMenuClick('left', 'year', {id: year.id, title: year.number}); },
+            title: year.number,
+            icon: 'fa fa-list'
+          });
+        });
+        angular.forEach(results[1], function(genre) {
+          $scope.menuGenre.push({
+            action: function() { $scope.sideNavMenuClick('left', 'genre', {id: genre.id, title: genre.name}); },
+            title: genre.name,
+            icon: 'fa fa-list'
+          });
+        });
+      });
     }
   ]);
