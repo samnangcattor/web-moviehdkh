@@ -15,10 +15,16 @@ angular.module('webMoviehdkhApp')
     controller: 'searchCtrl'
   })
   .controller('searchCtrl', [
-
+      'Searchs',
     function(
-
+      Searchs
     ) {
       var $ctrl = this;
+
+      $ctrl.search = function(q) {
+        Searchs.getSearch(q).then(function(response) {
+          console.log(response);
+        });
+      };
     }
   ]);
