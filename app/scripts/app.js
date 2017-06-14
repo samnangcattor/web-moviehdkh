@@ -17,8 +17,7 @@ angular
     'ngSanitize',
     'ngTouch',
     'ui.router',
-    'services.environments',
-    'angularUtils.directives.dirPagination'
+    'services.environments'
   ])
   .config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
     function ($stateProvider, $urlRouterProvider, $locationProvider) {
