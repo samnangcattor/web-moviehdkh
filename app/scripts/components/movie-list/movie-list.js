@@ -12,7 +12,11 @@ angular.module('webMoviehdkhApp')
     bindings: {
       movies: '<',
       title: '@',
-      perPage: '@'
+      perPage: '@',
+      total: '<',
+      currentPage: '<',
+      lastPage: '<',
+      page: '='
     },
     controller: 'movieListCtrl'
   })
@@ -22,5 +26,17 @@ angular.module('webMoviehdkhApp')
 
     ) {
       var $ctrl = this;
+
+      $ctrl.nextPage = function(currentPage, lastPage) {
+        if (currentPage < lastPage) {
+          $ctrl.page = currentPage + 1;
+        }
+      };
+
+      $ctrl.prevPage = function(currentPage) {
+        if (currentPage > 1) {
+          $ctrl.page = currentPage - 1;
+        }
+      };
     }
   ]);

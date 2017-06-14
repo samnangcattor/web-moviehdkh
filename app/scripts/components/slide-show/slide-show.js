@@ -43,8 +43,8 @@ angular.module('webMoviehdkhApp')
       });
 
       $ctrl.init = function() {
-        Movies.slide().then(function(slides) {
-          $ctrl.items = slides;
+        Movies.slide().then(function(moviesData) {
+          $ctrl.items = moviesData.movies;
           $ctrl.items[0].visible = true;
         });
       };

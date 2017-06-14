@@ -25,6 +25,16 @@
           </div>
         </div>
       </div>
+      <div class="x_footer" ng-if="$ctrl.currentPage">
+        <a ng-click="$ctrl.prevPage($ctrl.currentPage)" class="btn btn-round btn-primary btn-lg" href="#" ng-disabled="$ctrl.currentPage === 1">
+          <i class="fa fa-chevron-left"> Previous </i>
+        </a>
+        <span ng-bind="$ctrl.currentPage" class="badge bg-orange" style="font-size: 15px;"></span>
+        <a ng-click="$ctrl.nextPage($ctrl.currentPage, $ctrl.lastPage)" class="btn btn-round btn-primary btn-lg" href="#" ng-disabled="$ctrl.currentPage === $ctrl.lastPage">
+          Next
+          <i class="fa fa-chevron-right"> </i>
+        </a>
+      </div>
     </div>
   </div>
 </div>

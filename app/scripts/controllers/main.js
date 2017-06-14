@@ -17,11 +17,26 @@
        $scope,
        $q
      ) {
+      $scope.page = 1;
+
       $q.all([
-        Movies.newUpdate(),
+        Movies.newUpdate($scope.page),
         Movies.hot()
       ]).then(function (results) {
-        $scope.newMovies = results[0];
-        $scope.hotMovies = results[1];
+        var moviesData = results[0];
+        $scope.newMovies = moviesData.movies;
+        $scope.total = moviesData.total;
+        $scope.currentPage = moviesData.current_page;
+        $scope.lastPage = moviesData.last_page;
+        $scope.hotMovies = results[1].movies;
+      });
+
+      $scope.$watch('page', function() {
+        Movies.newUpdate($scope.page).then(function(moviesData) {
+          $scope.newMovies = moviesData.movies;
+          $scope.total = moviesData.total;
+          $scope.currentPage = moviesData.current_page;
+          $scope.lastPage = moviesData.last_page;
+        });
       });
    }]);
