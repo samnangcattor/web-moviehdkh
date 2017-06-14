@@ -10,7 +10,7 @@ angular.module('webMoviehdkhApp')
   .component('search', {
     templateUrl: 'scripts/components/search/search.html',
     bindings: {
-      search: '<',
+      title: '<'
     },
     controller: 'searchCtrl'
   })

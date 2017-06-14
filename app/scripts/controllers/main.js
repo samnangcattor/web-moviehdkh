@@ -18,6 +18,7 @@
        $q
      ) {
       $scope.page = 1;
+      $scope.title = 'Moviehdkh';
 
       $q.all([
         Movies.newUpdate($scope.page),
