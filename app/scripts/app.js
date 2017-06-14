@@ -33,6 +33,11 @@ angular
           url: '/years/{title}',
           templateUrl: 'views/year.html',
           controller: 'YearCtrl'
+        })
+        .state('genre', {
+          url: '/genres/{title}',
+          templateUrl: 'views/genre.html',
+          controller: 'GenreCtrl'
         });
     }
   ])
