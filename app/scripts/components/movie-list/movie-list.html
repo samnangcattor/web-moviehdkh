@@ -11,14 +11,10 @@
       <div class="x_content">
         <div class="row">
           <div class="col-md-55" ng-repeat="movie in $ctrl.movies|limitTo:$ctrl.perPage">
-            <div class="image view view-first">
-              <img style="width: 100%; display: block; height: 285px;" src="{{movie.poster}}" alt="image">
+            <div class="image view single-video">
+              <img style="width: 100%; display: block; height: 285px;" src="{{movie.poster}}" alt="{{movie.title}}">
               <a href="{{movie.slug}}">
                 <div class="mask" style="height: 285px;">
-                  <p ng-bind="movie.title" style="font-weight: bold;"></p>
-                  <div class="tools">
-                    <i class="fa fa-play-circle"></i>
-                  </div>
                 </div>
               </a>
             </div>
