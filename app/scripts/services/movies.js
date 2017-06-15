@@ -25,6 +25,11 @@ angular.module('webMoviehdkhApp')
         return MoviehdkhApi.get('/movies?q=slide').then(function(response) {
           return response.data;
         });
+      },
+      show: function(params) {
+        return MoviehdkhApi.get('/movies/' + params).then(function(response) {
+          return response.data;
+        });
       }
     }
   });

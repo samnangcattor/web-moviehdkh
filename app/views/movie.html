@@ -1,0 +1,13 @@
+<div ng-init="init()">
+  <div class="clearfix"></div>
+  <h1 ng-bind="movie.title"></h1>
+  <div class="row">
+    <search></search>
+    <movie-detail description="movie.description"
+      poster="movie.poster"
+      year="year"
+      genres="genres">
+    </movie-detail>
+    <movie-relative></movie-relative>
+  </div>
+</div>

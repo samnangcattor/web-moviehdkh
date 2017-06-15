@@ -38,5 +38,12 @@ angular.module('webMoviehdkhApp')
           $ctrl.page = currentPage - 1;
         }
       };
+
+      $ctrl.checkTypeUrl = function(movie) {
+        if (movie.mt) {
+          return "films/" + movie.slug;
+        }
+        return "movies/" + movie.slug;
+      }
     }
   ]);

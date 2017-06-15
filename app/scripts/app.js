@@ -56,6 +56,12 @@ angular
             searchs: '{searchs}'
           },
           title: 'Search'
+        })
+        .state('movie', {
+          url: '/movies/{title}',
+          templateUrl: 'views/movie.html',
+          controller: 'MovieCtrl',
+          title: '{title} - Moviehdkh'
         });
     }
   ])
