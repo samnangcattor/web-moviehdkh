@@ -4,15 +4,23 @@
       <div class="col-md-3 col-sm-3 col-xs-12 profile_left">
         <div class="profile_img">
           <div id="crop-avatar">
-              <img class="img-responsive avatar-view" width="100%" src="{{$ctrl.poster}}"
+            <img class="avatar-view" height="500" width="100%" src="{{$ctrl.poster}}"
                alt="{{$ctrl.title}}" title="{{$ctrl.title}}">
           </div>
-          <h3>Movie Details</h3>
+          <h2>Movie Details</h2>
           <ul class="list-unstyled user_data">
             <li><i class="fa fa-calendar"></i>
               <a href="years/{{$ctrl.year.number}}">
                 <span ng-bind="$ctrl.year.number"></span>
               </a>
+            </li>
+            <li>
+              <ul class="list-inline">
+                <li><i class="fa fa-film"></i></li>
+                <li ng-repeat="genre in $ctrl.genres">
+                  <a href="genre/{{genre.name}}" ng-bind="genre.name"></a>
+                </li>
+              </ul>
             </li>
 
             <li>
@@ -26,8 +34,26 @@
         </div>
       </div>
       <div class="col-md-9 col-sm-9 col-xs-12">
-        <div>
-         <div>
+        <iframe
+          allowtransparency="true"
+          style="background-image:url({{$ctrl.detail.thumbnail_url}});
+           background-color: black;
+           background-repeat: no-repeat;
+           background-size: 100%;"
+          width="100%"
+          height="500"
+          frameborder="1"
+          allowfullscreen>
+        </iframe>
+        <button class="btn btn-round btn-danger"
+          style="margin-top: -50%;margin-left: 50%; font-size: 30px;">
+          <i class="fa fa-play-circle" aria-hidden="true"></i>
+        </button>
+        <h3>
+          YOU NEED TO LOGIN WITH GOOGLE ACCOUNT TO GET ACCESS THIS VIDEOS
+          AFTER LOGIN YOU NEED TO RELOAD PAGE AGAIN,
+          IF IT STILL CAN NOT WATCH, PLEASE CHAT TO US IN GROUP.
+        </h3>
       </div>
     </div>
   </div>

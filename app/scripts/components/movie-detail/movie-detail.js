@@ -26,12 +26,6 @@ angular.module('webMoviehdkhApp')
     ) {
       var $ctrl = this;
 
-      String.prototype.trunc = String.prototype.trunc ||
-      function(n){
-        return (this.length > n) ? this.substr(0, n-1) + '&hellip;' : this;
-      };
-
-
       $ctrl.init = function() {
         $ctrl.title = $stateParams.title;
         Details.show($ctrl.title).then(function(response) {

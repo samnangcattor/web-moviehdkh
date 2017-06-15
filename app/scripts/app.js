@@ -18,7 +18,7 @@ angular
     'ngTouch',
     'ui.router',
     'services.environments',
-    'angular-loading-bar',
+    'angular-loading-bar'
   ])
   .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', 'cfpLoadingBarProvider',
     function ($stateProvider, $urlRouterProvider, $locationProvider, cfpLoadingBarProvider) {
