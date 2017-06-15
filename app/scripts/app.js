@@ -34,12 +34,28 @@ angular
         .state('year', {
           url: '/years/{title}',
           templateUrl: 'views/year.html',
-          controller: 'YearCtrl'
+          controller: 'YearCtrl',
+          title: 'Year'
         })
         .state('genre', {
           url: '/genres/{title}',
           templateUrl: 'views/genre.html',
-          controller: 'GenreCtrl'
+          controller: 'GenreCtrl',
+          title: 'Genre'
+        })
+        .state('test', {
+          url: '/test',
+          template: '<test></test>',
+          controller: 'TestCtrl'
+        })
+        .state('search', {
+          url: '/searchs?{s}',
+          templateUrl: 'views/search.html',
+          controller: 'SearchCtrl',
+          params: {
+            searchs: '{searchs}'
+          },
+          title: 'Search'
         });
     }
   ])
