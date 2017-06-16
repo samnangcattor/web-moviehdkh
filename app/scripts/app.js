@@ -21,12 +21,20 @@ angular
     'angular-loading-bar',
     'ng-token-auth'
   ])
-  .config(['$compileProvider', '$stateProvider', '$urlRouterProvider', '$locationProvider', 'cfpLoadingBarProvider', '$authProvider', 'Environments',
-    function ($compileProvider, $stateProvider, $urlRouterProvider, $locationProvider, cfpLoadingBarProvider, $authProvider, Environments) {
+  .config(['$compileProvider', '$stateProvider', '$urlRouterProvider', '$locationProvider', 'cfpLoadingBarProvider', '$authProvider', 'Environments', '$sceDelegateProvider',
+    function ($compileProvider, $stateProvider, $urlRouterProvider, $locationProvider, cfpLoadingBarProvider, $authProvider, Environments, $sceDelegateProvider) {
       cfpLoadingBarProvider.includeSpinner = false;
       $locationProvider.html5Mode(true);
       $urlRouterProvider.otherwise('/');
       $compileProvider.debugInfoEnabled(false);
+
+      $sceDelegateProvider.resourceUrlWhitelist([
+        // Allow same origin resource loads.
+        'self',
+        // Allow loading from our assets domain. **.
+        'https://youtube.googleapis.com/**',
+        'https://drive.google.com/**'
+      ]);
 
       $authProvider.configure({
         apiUrl: Environments.apiUrl,
