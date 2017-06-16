@@ -18,13 +18,26 @@ angular
     'ngTouch',
     'ui.router',
     'services.environments',
-    'angular-loading-bar'
+    'angular-loading-bar',
+    'ng-token-auth'
   ])
-  .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', 'cfpLoadingBarProvider',
-    function ($stateProvider, $urlRouterProvider, $locationProvider, cfpLoadingBarProvider) {
+  .config(['$compileProvider', '$stateProvider', '$urlRouterProvider', '$locationProvider', 'cfpLoadingBarProvider', '$authProvider', 'Environments',
+    function ($compileProvider, $stateProvider, $urlRouterProvider, $locationProvider, cfpLoadingBarProvider, $authProvider, Environments) {
       cfpLoadingBarProvider.includeSpinner = false;
       $locationProvider.html5Mode(true);
       $urlRouterProvider.otherwise('/');
+      $compileProvider.debugInfoEnabled(false);
+
+      $authProvider.configure({
+        apiUrl: Environments.apiUrl,
+        storage: 'localStorage',
+        omniauthWindowType: 'newWindow',
+        validateOnPageLoad: false,
+        authProviderPaths: {
+          google: '/auth/google_oauth2'
+        }
+      });
+
       $stateProvider
         .state('main', {
           url: '/',
@@ -57,11 +70,31 @@ angular
           },
           title: 'Search'
         })
-        .state('movie', {
+        .state('auth.movie', {
           url: '/movies/{title}',
           templateUrl: 'views/movie.html',
           controller: 'MovieCtrl',
           title: '{title} - Moviehdkh'
+        })
+        .state('signin', {
+          url: '/signin',
+          templateUrl: 'views/signin.html',
+          controller: 'SigninCtrl',
+          params: {
+            hide_google_oauth: null
+          }
+        })
+        .state('auth', {
+          abstract: true,
+          template: '<ui-view/>',
+          resolve: {
+            auth: function($auth, $state, $location, $rootScope) {
+              return $auth.validateUser().then(function() {
+              }).catch(function() {
+                $state.go('signin');
+              });
+            }
+          }
         });
     }
   ])
@@ -88,6 +121,13 @@ angular
         $state.go(target, attrs || {});
       };
 
+      var afterLogin = function() {
+        if (!_.isNull($scope.user.id)) {
+          $state.go('main');
+        }
+      };
+
+      $scope.$on('auth:login-success' , afterLogin);
 
       $q.all([
         Years.get(),
