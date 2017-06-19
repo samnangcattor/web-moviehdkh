@@ -142,6 +142,12 @@ angular
               });
             }
           }
+        })
+        .state('auth.history', {
+          url: '/history',
+          templateUrl: 'views/history.html',
+          controller: 'HistoryCtrl',
+          title: 'History Watched - Moviehdkh'
         });
     }
   ])
