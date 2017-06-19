@@ -21,12 +21,50 @@ angular
     'angular-loading-bar',
     'ng-token-auth'
   ])
-  .config(['$compileProvider', '$stateProvider', '$urlRouterProvider', '$locationProvider', 'cfpLoadingBarProvider', '$authProvider', 'Environments', '$sceDelegateProvider',
-    function ($compileProvider, $stateProvider, $urlRouterProvider, $locationProvider, cfpLoadingBarProvider, $authProvider, Environments, $sceDelegateProvider) {
+  .config(['$httpProvider', '$compileProvider', '$stateProvider', '$urlRouterProvider', '$locationProvider', 'cfpLoadingBarProvider', '$authProvider', 'Environments', '$sceDelegateProvider',
+    function ($httpProvider, $compileProvider, $stateProvider, $urlRouterProvider, $locationProvider, cfpLoadingBarProvider, $authProvider, Environments, $sceDelegateProvider) {
       cfpLoadingBarProvider.includeSpinner = false;
-      $locationProvider.html5Mode(true);
+      var interceptor = ["$q", "$injector", function ($q, $injector) {
+        return {
+          request: function (config) {
+            var $http = $injector.get("$http");
+            var uniqueRequestOptionName = "unique";
+            var requestIdOptionName = "requestId";
+
+            function checkForDuplicates(config) {
+              return !!config[uniqueRequestOptionName];
+            }
+
+            function checkIfDuplicated(config) {
+              var duplicated = $http.pendingRequests.filter(function (pendingConfig) {
+                return pendingConfig[requestIdOptionName] && pendingConfig[requestIdOptionName] === config[requestIdOptionName];
+              });
+              return duplicated.length > 0;
+            }
+
+            function buildRejectedRequestPromise(config) {
+              var dfd = $q.defer();
+              // var response = {data: {}, headers: {}, status: 499, config: config};
+              // dfd.reject(response);
+
+              return dfd.promise;
+            }
+
+            if (checkForDuplicates(config) && checkIfDuplicated(config)) {
+              return buildRejectedRequestPromise(config);
+            }
+
+            return config || $q.when(config);
+          }
+        };
+      }];
+
       $urlRouterProvider.otherwise('/');
       $compileProvider.debugInfoEnabled(false);
+      $httpProvider.interceptors.push(interceptor);
+      $httpProvider.useApplyAsync(true);
+      $httpProvider.useXDomain = true;
+      $locationProvider.html5Mode(true);
 
       $sceDelegateProvider.resourceUrlWhitelist([
         // Allow same origin resource loads.
@@ -50,19 +88,20 @@ angular
         .state('main', {
           url: '/',
           templateUrl: 'views/main.html',
-          controller: 'MainCtrl'
+          controller: 'MainCtrl',
+          title: 'Moviehd - Movie Storage'
         })
         .state('year', {
           url: '/years/{title}',
           templateUrl: 'views/year.html',
           controller: 'YearCtrl',
-          title: 'Year'
+          title: 'Year - Moviehdkh'
         })
         .state('genre', {
           url: '/genres/{title}',
           templateUrl: 'views/genre.html',
           controller: 'GenreCtrl',
-          title: 'Genre'
+          title: 'Genre - Moviehdkh'
         })
         .state('test', {
           url: '/test',
@@ -74,7 +113,7 @@ angular
           templateUrl: 'views/search.html',
           controller: 'SearchCtrl',
           params: {
-            searchs: '{searchs}'
+            searchs: '{searchs} - Moviehdkh'
           },
           title: 'Search'
         })

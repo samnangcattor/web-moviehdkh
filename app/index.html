@@ -2,10 +2,14 @@
 <html ng-app="webMoviehdkhApp">
   <head>
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <base href="/">
-    <title>Moviehkhd - moviehdkh club</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
+    <title page-title></title>
+    <meta name="description" content="Hollywood movies, 18+ korea films in cambodia (khmer). Moviehdkh has many video, movies, films, hd, box office, HD.">
+    <meta name="keywords" content="Hollywood movie, moviehdkh, 18+ korea">
+    <meta name="author" content="Moviehdkh - Movie Storage">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <link rel="shortcut icon" sizes="16x16 32x32 48x48 64x64" href="favicon.ico"/>
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="bower_components/gentelella/vendors/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="bower_components/gentelella/vendors/font-awesome/css/font-awesome.min.css">
@@ -14,6 +18,19 @@
     <link rel="stylesheet" href="bower_components/gentelella/vendors/jqvmap/dist/jqvmap.min.css">
     <link rel="stylesheet" href="bower_components/gentelella/build/css/custom.min.css">
     <link rel='stylesheet' href="bower_components/angular-loading-bar/build/loading-bar.min.css"/>
+    <script type="text/javascript"><!--
+      // var _b = document.getElementsByTagName('base')[0], _bH = "https://www.moviehdkh.com/";
+      var _b = document.getElementsByTagName('base')[0], _bH = "/";
+      if (_b && _b.href != _bH) _b.href = _bH;
+      var _flagLoaded=0;
+      setTimeout(function(){
+        try{
+        //if(typeof _flagLoaded!="undefined" && !_flagLoaded)
+        //window.location.replace(window.location.pathname);
+        }catch(err){}
+      },2000);
+      -->
+    </script>
   </head>
   <body ng-controller="moviehdkhMaterial" class="nav-md">
     <div class="container body">
@@ -135,6 +152,8 @@
     <script src="scripts/components/movie-detail/movie-detail.js"></script>
     <script src="scripts/components/movie-relative/movie-relative.js"></script>
     <script src="scripts/components/video-detail/video-detail.js"></script>
+
+    <script src="scripts/directives/page-title.js"></script>
     <!-- setup environments-->
     <script src="scripts/services/environments.js"></script>
   </body>
