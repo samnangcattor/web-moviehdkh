@@ -14,7 +14,7 @@
   }],
   "deploy" : {
     "production" : {
-      "user" : "node",
+      "user" : "moviehdkh",
       "host" : "172.104.39.70",
       "ref"  : "origin/master",
       "repo" : "git@github.com:samnangcattor/web-moviehdkh.git",
@@ -22,7 +22,7 @@
       "post-deploy" : "pm2 startOrRestart ecosystem.json --env production"
     },
     "dev" : {
-      "user" : "node",
+      "user" : "moviehdkh",
       "host" : "172.104.39.70",
       "ref"  : "origin/master",
       "repo" : "git@github.com:samnangcattor/web-moviehdkh.git",
