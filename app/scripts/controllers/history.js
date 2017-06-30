@@ -11,7 +11,7 @@
    .controller('HistoryCtrl', [
       '$scope',
      function (
-       $scope,
+       $scope
      ) {
 
    }]);
