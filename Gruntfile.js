@@ -542,4 +542,5 @@ module.exports = function (grunt) {
   ]);
 
   grunt.loadNpmTasks('grunt-replace');
+  grunt.loadNpmTasks('grunt-pm2-deploy');
 };

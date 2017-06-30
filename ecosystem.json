@@ -1,6 +1,6 @@
 {
   "apps" : [{
-    "name"      : "API",
+    "name"      : "web-moviehdkhs",
     "script"    : "app.js",
     "env": {
       "COMMON_VARIABLE": "true"
@@ -18,7 +18,7 @@
       "host" : "172.104.39.70",
       "ref"  : "origin/master",
       "repo" : "git@github.com:samnangcattor/web-moviehdkh.git",
-      "path" : "/var/www/production",
+      "path" : "/home/moviehdkh/production",
       "post-deploy" : "pm2 startOrRestart ecosystem.json --env production"
     },
     "dev" : {
@@ -26,7 +26,7 @@
       "host" : "172.104.39.70",
       "ref"  : "origin/master",
       "repo" : "git@github.com:samnangcattor/web-moviehdkh.git",
-      "path" : "/var/www/development",
+      "path" : "/home/moviehdkh",
       "post-deploy" : "pm2 startOrRestart ecosystem.json --env dev",
       "env"  : {
         "NODE_ENV": "dev"
