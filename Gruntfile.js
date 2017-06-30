@@ -277,8 +277,8 @@ module.exports = function (grunt) {
     // additional tasks can operate on them
     cssmin: {
       minify: {
-        src: 'path-to/default.css',
-        dest: 'path-to/default.min.css'
+        src: '<%= yeoman.app %>/default.css',
+        dest: '<%= yeoman.app %>/default.min.css'
       }
     },
     useminPrepare: {
